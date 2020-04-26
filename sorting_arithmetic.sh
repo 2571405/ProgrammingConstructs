@@ -44,3 +44,19 @@ do
 over1=$(( $over1+1 ))
 done
 echo "The array in descending order is: " ${array[@]}
+
+over=0
+while (( over!=3 ))
+do
+   for (( j=0;j<=2;j=$(( $j+1 )) ))
+   do
+      if (( ${array[$j]}>=${array[$j+1]} ))
+      then
+         temp=${array[$j]}
+         array[$j]=${array[$j+1]}
+         array[$j+1]=$temp
+      fi
+   done
+over=$(( $over+1 ))
+done
+echo "The array in ascending order is: " ${array[@]}
