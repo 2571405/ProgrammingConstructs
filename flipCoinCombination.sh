@@ -75,3 +75,61 @@ echo "Doublet percentage (HT): "$ht_per
 echo "Doublet percentage (TH): "$th_per
 echo "Doublet percentage (TT): "$tt_per
 
+declare -A dictionary3
+for (( l=0;l<=9;l=$l+1 ))
+do
+   toss4=$(( $RANDOM%8 ))
+   case $toss4 in
+   0)
+   dictionary[$l]=0
+   ttt=$(( $ttt+1 ))
+   ;;
+   1)
+   dictionary[$l]=1
+   tth=$(( $tth+1 ))
+   ;;
+   2)
+   dictionary[$l]=2
+   thh=$(( $thh+1 ))
+   ;;
+   3)
+   dictionary[$l]=3
+   hhh=$(( $hhh+1 ))
+   ;;
+   4)
+   dictionary[$l]=4
+   htt=$(( $htt+1 ))
+   ;;
+   5)
+   dictionary[$l]=5
+   hht=$(( $hht+1 ))
+   ;;
+   6)
+   dictionary[$l]=6
+   hth=$(( $hth+1 ))
+   ;;
+   7)
+   dictionary[$l]=7
+   THT=$(( $THT+1 ))
+   ;;
+   esac
+done
+
+ttt_per=`echo $ttt | awk '{t=($1/10)*100} {print t}'`
+tth_per=`echo $tth | awk '{t=($1/10)*100} {print t}'`
+thh_per=`echo $thh | awk '{t=($1/10)*100} {print t}'`
+hhh_per=`echo $hhh | awk '{t=($1/10)*100} {print t}'`
+htt_per=`echo $htt | awk '{t=($1/10)*100} {print t}'`
+hht_per=`echo $hht | awk '{t=($1/10)*100} {print t}'`
+hth_per=`echo $hth | awk '{t=($1/10)*100} {print t}'`
+tht_per=`echo $tht | awk '{t=($1/10)*100} {print t}'`
+array_sort=($head_per1 $tails_per1 $tt_per $th_per $ht_per $hh_per $ttt_per $tth_per $thh_per $hhh_per $htt_per $hht_per $hth_per $tht_per)
+echo "Triplet percentage (HHH): "$hhh_per
+echo "Triplet percentage (TTT): "$ttt_per
+echo "Triplet percentage (HTH): "$hth_per
+echo "Triplet percentage (THT): "$tht_per
+echo "Triplet percentage (HHT): "$hht_per
+echo "Triplet percentage (THH): "$thh_per
+echo "Triplet percentage (TTH): "$tth_per
+echo "Triplet percentage (HTT): "$htt_per
+
