@@ -24,4 +24,9 @@ dictionary[1]=$second
 dictionary[2]=$third
 dictionary[3]=$fourth
 
+for (( i=0;i<=3;i=$i+1 ))
+do
+	array[$i]=${dictionary[$i]}
+done
+
 
