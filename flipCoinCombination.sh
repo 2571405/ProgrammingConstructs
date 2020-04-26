@@ -133,3 +133,29 @@ echo "Triplet percentage (THH): "$thh_per
 echo "Triplet percentage (TTH): "$tth_per
 echo "Triplet percentage (HTT): "$htt_per
 
+over3=0
+while (( over3!=13 ))
+do
+   for (( m=0;m<=12;m=$(( $m+1 )) ))
+   do
+      if (( ${array_sort[$m]}<=${array_sort[$m+1]} ))
+      then
+         temp=${array_sort[$m]}
+         array_sort[$m]=${array_sort[$m+1]}
+         array_sort[$m+1]=$temp
+      fi
+   done
+over3=$(( $over3+1 ))
+done
+highest=${array_sort[0]}
+echo $highest
+if (( $highest==$head_per1 || $highest==$tails_per1 ))
+then
+   echo "Singlet won"
+elif (( $highest==$tt_per || $highest==$th_per || $highest==$ht_per $highest==$hh_per ))
+then
+   echo "Doublet won"
+elif (( $highest==$ttt_per || $highest==$tth_per $highest==$thh_per || $highest==$hhh_per || $highest==$htt_per || $highest==$hht_per || $highest==$hth_per $tht_per ))
+then
+   echo "Triplet won"
+fi
