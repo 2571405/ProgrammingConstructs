@@ -58,3 +58,29 @@ then
 else
    echo "Its a tie!"
 fi
+
+if (( $heads==$tails ))
+then
+   while (( 1 ))
+   do
+      toss2=$(( $RANDOM%2 ))
+      if (( $toss2 ))
+      then
+         $heads=$(( $heads+1 ))
+      else
+         $tails=$(( $tails+1 ))
+      fi
+      if (( ($heads-$tails)==2 || ($tails-$heads)==2 ))
+      then
+         if (( $heads>$tails ))
+         then
+            echo "Finally HEADS won!"
+            exit
+         elif (( $tails>$heads ))
+         then
+            echo "Finally TAILS won!"
+            exit
+         fi
+      fi
+   done
+fi
