@@ -29,4 +29,18 @@ do
 	array[$i]=${dictionary[$i]}
 done
 
-
+over1=0
+while (( over1!=3 ))
+do
+   for (( j=0;j<=2;j=$(( $j+1 )) ))
+   do
+      if (( ${array[$j]}<=${array[$j+1]} ))
+      then
+         temp=${array[$j]}
+         array[$j]=${array[$j+1]}
+         array[$j+1]=$temp
+      fi
+   done
+over1=$(( $over1+1 ))
+done
+echo "The array in descending order is: " ${array[@]}
