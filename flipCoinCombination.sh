@@ -38,3 +38,40 @@ tails_per1=`echo $tails | awk '{t=($1/10)*100} {print t}'`
 echo "Singlet percentage (heads): "$head_per1
 echo "Singlet percentage (tails): "$tails_per1
 
+declare -A dictionary2
+tt=0
+th=0
+ht=0
+hh=0
+for (( k=0;k<=9;k=$k+1 ))
+do
+   toss2=$(( $RANDOM%2 ))
+   toss3=$(( $RANDOM%2 ))
+   if (( $toss2==0 && $toss3==0 ))
+   then
+      dictionary2[$k]=0
+      tt=$(( $tt+1 ))
+   elif (( $toss2==0 && $toss3==1 ))
+   then
+      dictionary2[$k]=1
+      th=$(( $th+1 ))
+   elif (( $toss2==1 && $toss3==0 ))
+   then
+      dictionary2[$k]=2
+      ht=$(( $ht+1 ))
+   elif (( $toss2==1 && $toss3==1 ))
+   then
+      dictionary2[$k]=3
+      hh=$(( $hh+1 ))
+   fi
+done
+tt_per=`echo $tt | awk '{t=($1/10)*100} {print t}'`
+th_per=`echo $th | awk '{t=($1/10)*100} {print t}'`
+ht_per=`echo $ht | awk '{t=($1/10)*100} {print t}'`
+hh_per=`echo $hh | awk '{t=($1/10)*100} {print t}'`
+
+echo "Doublet percentage (HH): "$hh_per
+echo "Doublet percentage (HT): "$ht_per
+echo "Doublet percentage (TH): "$th_per
+echo "Doublet percentage (TT): "$tt_per
+
