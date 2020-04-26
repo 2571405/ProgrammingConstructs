@@ -6,3 +6,5 @@ read -p "Enter 2nd input" b
 read -p "Enter 3rd input" c
 
 first=$(( $a+($b*$c) ))
+
+second=$(( ($a*$b)+$c ))
